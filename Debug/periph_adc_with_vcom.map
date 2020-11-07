@@ -31,7 +31,7 @@ c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/
 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(memset.o)
                               ./example/src/adc.o (memset)
 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
-                              ./example/src/adc.o (sprintf)
+                              ./example/src/adc.o (printf)
 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(initio.o)
                               c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_nohost.a(_cr__main.o) (_initio)
 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(printf.o)
@@ -110,7 +110,10 @@ c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/
 Allocating common symbols
 Common symbol       size              file
 
+sequence0Complete   0x1               ./example/src/adc.o
 SystemCoreClock     0x4               C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
+sequence1Complete   0x1               ./example/src/adc.o
+threshold1Crossed   0x1               ./example/src/adc.o
 g_pUsbApi           0x4               ./example/src/adc.o
 
 Discarded input sections
@@ -173,11 +176,6 @@ Discarded input sections
  .data          0x00000000        0x0 ./example/src/adc.o
  .bss           0x00000000        0x0 ./example/src/adc.o
  .bss.ticks     0x00000000        0x4 ./example/src/adc.o
- .bss.sequence0Complete
-                0x00000000        0x1 ./example/src/adc.o
- .bss.threshold1Crossed
-                0x00000000        0x1 ./example/src/adc.o
- .bss.g_rxBuff  0x00000000      0x100 ./example/src/adc.o
  .text.find_IntfDesc
                 0x00000000       0x5c ./example/src/adc.o
  .group         0x00000000        0x8 ./example/src/cr_startup_lpc15xx.o
@@ -275,10 +273,10 @@ Discarded input sections
  .text          0x00000000        0x0 ./example/src/hid_mouse.o
  .data          0x00000000        0x0 ./example/src/hid_mouse.o
  .bss           0x00000000        0x0 ./example/src/hid_mouse.o
- .text.USB_IsConfigured
-                0x00000000       0x28 ./example/src/hid_mouse.o
- .text.Mouse_Tasks
-                0x00000000       0x54 ./example/src/hid_mouse.o
+ .text.setXYMouseReport
+                0x00000000       0x2c ./example/src/hid_mouse.o
+ .text.setLeftButtonMouseReport
+                0x00000000       0x3c ./example/src/hid_mouse.o
  .debug_macro   0x00000000      0x886 ./example/src/hid_mouse.o
  .debug_macro   0x00000000       0x10 ./example/src/hid_mouse.o
  .debug_macro   0x00000000      0x12d ./example/src/hid_mouse.o
@@ -475,6 +473,8 @@ Discarded input sections
  .text          0x00000000        0x0 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
  .data          0x00000000        0x0 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
  .bss           0x00000000        0x0 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+ .text.Chip_GPIO_GetPinState
+                0x00000000       0x34 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
  .text.Chip_GPIO_SetPinToggle
                 0x00000000       0x30 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
  .text.__sys_readc
@@ -487,6 +487,10 @@ Discarded input sections
                 0x00000000       0x58 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
  .text.Board_LED_Toggle
                 0x00000000       0x30 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+ .rodata.stateButton
+                0x00000000        0x5 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+ .text.Joystick_GetStatus
+                0x00000000       0x60 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
  .debug_macro   0x00000000       0x10 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
  .debug_macro   0x00000000      0x12d C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
  .debug_macro   0x00000000      0x5b2 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
@@ -1818,7 +1822,7 @@ END GROUP
                 0x02009000                __top_Ram2_4 = 0x2009000
                 0x02009000                __top_RAM3 = 0x2009000
 
-.text           0x00000000     0x4890
+.text           0x00000000     0x4680
  FILL mask 0xff
                 0x00000000                __vectors_start__ = ABSOLUTE (.)
  *(.isr_vector)
@@ -1827,13 +1831,13 @@ END GROUP
                 0x000000fc                . = ALIGN (0x4)
                 0x000000fc                __section_table_start = .
                 0x000000fc                __data_section_table = .
-                0x000000fc        0x4 LONG 0x4890 LOADADDR (.data)
+                0x000000fc        0x4 LONG 0x4680 LOADADDR (.data)
                 0x00000100        0x4 LONG 0x2000000 ADDR (.data)
                 0x00000104        0x4 LONG 0x24 SIZEOF (.data)
-                0x00000108        0x4 LONG 0x4890 LOADADDR (.data_RAM2)
+                0x00000108        0x4 LONG 0x4680 LOADADDR (.data_RAM2)
                 0x0000010c        0x4 LONG 0x2004000 ADDR (.data_RAM2)
                 0x00000110        0x4 LONG 0x0 SIZEOF (.data_RAM2)
-                0x00000114        0x4 LONG 0x4890 LOADADDR (.data_RAM3)
+                0x00000114        0x4 LONG 0x4680 LOADADDR (.data_RAM3)
                 0x00000118        0x4 LONG 0x2008000 ADDR (.data_RAM3)
                 0x0000011c        0x4 LONG 0x0 SIZEOF (.data_RAM3)
                 0x00000120                __data_section_table_end = .
@@ -1939,489 +1943,483 @@ END GROUP
                 0x000004d0       0x20 ./example/src/adc.o
                 0x000004d0                USB_IRQHandler
  .text.showValudeADC
-                0x000004f0      0x108 ./example/src/adc.o
+                0x000004f0       0x74 ./example/src/adc.o
                 0x000004f0                showValudeADC
  .text.SysTick_Handler
-                0x000005f8       0x30 ./example/src/adc.o
-                0x000005f8                SysTick_Handler
+                0x00000564       0x30 ./example/src/adc.o
+                0x00000564                SysTick_Handler
  .text.ADC1A_IRQHandler
-                0x00000628       0x38 ./example/src/adc.o
-                0x00000628                ADC1A_IRQHandler
- .text.main     0x00000660      0x1c8 ./example/src/adc.o
-                0x00000660                main
- .text.setXYMouseReport
-                0x00000828       0x2c ./example/src/hid_mouse.o
- .text.setLeftButtonMouseReport
-                0x00000854       0x3c ./example/src/hid_mouse.o
+                0x00000594       0x38 ./example/src/adc.o
+                0x00000594                ADC1A_IRQHandler
+ .text.main     0x000005cc      0x1bc ./example/src/adc.o
+                0x000005cc                main
+ .text.USB_IsConfigured
+                0x00000788       0x28 ./example/src/hid_mouse.o
  .text.Mouse_UpdateReport
-                0x00000890       0xb4 ./example/src/hid_mouse.o
+                0x000007b0       0x1c ./example/src/hid_mouse.o
  .text.Mouse_GetReport
-                0x00000944       0x48 ./example/src/hid_mouse.o
+                0x000007cc       0x48 ./example/src/hid_mouse.o
  .text.Mouse_SetReport
-                0x0000098c       0x38 ./example/src/hid_mouse.o
+                0x00000814       0x38 ./example/src/hid_mouse.o
  .text.Mouse_EpIN_Hdlr
-                0x000009c4       0x2c ./example/src/hid_mouse.o
+                0x0000084c       0x2c ./example/src/hid_mouse.o
  .text.Mouse_Init
-                0x000009f0       0xbc ./example/src/hid_mouse.o
-                0x000009f0                Mouse_Init
+                0x00000878       0xbc ./example/src/hid_mouse.o
+                0x00000878                Mouse_Init
+ .text.Mouse_Tasks
+                0x00000934       0x64 ./example/src/hid_mouse.o
+                0x00000934                Mouse_Tasks
  .text.SystemInit
-                0x00000aac        0xc ./example/src/sysinit.o
-                0x00000aac                SystemInit
+                0x00000998        0xc ./example/src/sysinit.o
+                0x00000998                SystemInit
  .text.Chip_IOCON_PinMuxSet
-                0x00000ab8       0x2c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+                0x000009a4       0x2c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
  .text.Chip_SWM_MovablePortPinAssign
-                0x00000ae4       0x30 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+                0x000009d0       0x30 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
  .text.Chip_GPIO_SetPinState
-                0x00000b14       0x38 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
- .text.Chip_GPIO_GetPinState
-                0x00000b4c       0x34 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+                0x00000a00       0x38 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
  .text.Chip_GPIO_SetPinDIROutput
-                0x00000b80       0x3c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+                0x00000a38       0x3c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
  .text.Chip_GPIO_SetPinDIRInput
-                0x00000bbc       0x40 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+                0x00000a74       0x40 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
  .text.Chip_UART_Enable
-                0x00000bfc       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+                0x00000ab4       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
  .text.Chip_UART_TXEnable
-                0x00000c1c       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+                0x00000ad4       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
  .text.Chip_UART_ConfigData
-                0x00000c3c       0x28 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+                0x00000af4       0x28 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
  .text.__sys_write
-                0x00000c64       0x38 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
-                0x00000c64                __sys_write
+                0x00000b1c       0x38 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+                0x00000b1c                __sys_write
  .text.Board_UARTPutChar
-                0x00000c9c       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
-                0x00000c9c                Board_UARTPutChar
+                0x00000b54       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+                0x00000b54                Board_UARTPutChar
  .text.Board_UARTPutSTR
-                0x00000cc0       0x28 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
-                0x00000cc0                Board_UARTPutSTR
+                0x00000b78       0x28 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+                0x00000b78                Board_UARTPutSTR
  .text.Board_Debug_Init
-                0x00000ce8       0x70 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
-                0x00000ce8                Board_Debug_Init
+                0x00000ba0       0x70 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+                0x00000ba0                Board_Debug_Init
  .text.Board_LED_Init
-                0x00000d58       0x5c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+                0x00000c10       0x5c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
  .text.Board_Init
-                0x00000db4       0x18 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
-                0x00000db4                Board_Init
+                0x00000c6c       0x18 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+                0x00000c6c                Board_Init
  .text.Board_Joystick_Init
-                0x00000dcc       0x44 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
-                0x00000dcc                Board_Joystick_Init
- .text.Joystick_GetStatus
-                0x00000e10       0x60 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
-                0x00000e10                Joystick_GetStatus
+                0x00000c84       0x44 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+                0x00000c84                Board_Joystick_Init
  .text.Chip_SYSCTL_PeriphReset
-                0x00000e70       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
+                0x00000cc8       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
  .text.Chip_Clock_SetUSBPLLSource
-                0x00000e94       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
+                0x00000cec       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
  .text.Chip_Clock_SetupUSBPLL
-                0x00000eb4       0x34 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
+                0x00000d0c       0x34 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
  .text.Chip_Clock_IsUSBPLLLocked
-                0x00000ee8       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
+                0x00000d40       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
  .text.Chip_Clock_SetSysTickClockDiv
-                0x00000f0c       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
+                0x00000d64       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
  .text.Chip_SWM_MovablePortPinAssign
-                0x00000f2c       0x30 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
+                0x00000d84       0x30 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
  .text.Board_SetupMuxing
-                0x00000f5c       0x80 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
-                0x00000f5c                Board_SetupMuxing
+                0x00000db4       0x80 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
+                0x00000db4                Board_SetupMuxing
  .text.Board_SetupClocking
-                0x00000fdc       0x3c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
-                0x00000fdc                Board_SetupClocking
+                0x00000e34       0x3c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
+                0x00000e34                Board_SetupClocking
  .text.Board_SystemInit
-                0x00001018       0x1c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
-                0x00001018                Board_SystemInit
+                0x00000e70       0x1c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
+                0x00000e70                Board_SystemInit
  .text.Chip_SYSCTL_PeriphReset
-                0x00001034       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
+                0x00000e8c       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
  .text.Chip_ADC_SetDivider
-                0x00001058       0x2c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
+                0x00000eb0       0x2c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
  .text.Chip_ADC_SetIntBits
-                0x00001084       0x28 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
-                0x00001084                Chip_ADC_SetIntBits
+                0x00000edc       0x28 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
+                0x00000edc                Chip_ADC_SetIntBits
  .text.Chip_ADC_ClearIntBits
-                0x000010ac       0x2c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
-                0x000010ac                Chip_ADC_ClearIntBits
+                0x00000f04       0x2c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
+                0x00000f04                Chip_ADC_ClearIntBits
  .text.Chip_ADC_ClearTHRSELBits
-                0x000010d8       0x2c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
-                0x000010d8                Chip_ADC_ClearTHRSELBits
+                0x00000f30       0x2c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
+                0x00000f30                Chip_ADC_ClearTHRSELBits
  .text.Chip_ADC_Init
-                0x00001104       0x50 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
-                0x00001104                Chip_ADC_Init
+                0x00000f5c       0x50 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
+                0x00000f5c                Chip_ADC_Init
  .text.Chip_ADC_SetClockRate
-                0x00001154       0x3c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
-                0x00001154                Chip_ADC_SetClockRate
+                0x00000fac       0x3c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
+                0x00000fac                Chip_ADC_SetClockRate
  .text.Chip_ADC_StartCalibration
-                0x00001190       0x40 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
-                0x00001190                Chip_ADC_StartCalibration
+                0x00000fe8       0x40 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
+                0x00000fe8                Chip_ADC_StartCalibration
  .text.Chip_ADC_SetSequencerBits
-                0x000011d0       0x38 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
-                0x000011d0                Chip_ADC_SetSequencerBits
+                0x00001028       0x38 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
+                0x00001028                Chip_ADC_SetSequencerBits
  .text.Chip_ADC_EnableInt
-                0x00001208       0x1c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
-                0x00001208                Chip_ADC_EnableInt
+                0x00001060       0x1c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
+                0x00001060                Chip_ADC_EnableInt
  .text.Chip_ADC_SetThresholdInt
-                0x00001224       0x40 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
-                0x00001224                Chip_ADC_SetThresholdInt
+                0x0000107c       0x40 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
+                0x0000107c                Chip_ADC_SetThresholdInt
  .text.Chip_ADC_SelectTH0Channels
-                0x00001264       0x1c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
-                0x00001264                Chip_ADC_SelectTH0Channels
+                0x000010bc       0x1c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
+                0x000010bc                Chip_ADC_SelectTH0Channels
  .text.Chip_SYSCTL_PeriphReset
-                0x00001280       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
+                0x000010d8       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
  .text.Chip_Clock_SetUSBClockSource
-                0x000012a4       0x2c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
+                0x000010fc       0x2c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
  .text.Chip_Clock_SetUSBPLLSource
-                0x000012d0       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
+                0x00001128       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
  .text.Chip_Clock_SetupUSBPLL
-                0x000012f0       0x34 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
+                0x00001148       0x34 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
  .text.Chip_Clock_IsUSBPLLLocked
-                0x00001324       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
+                0x0000117c       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
  .text.SystemCoreClockUpdate
-                0x00001348       0x18 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
-                0x00001348                SystemCoreClockUpdate
+                0x000011a0       0x18 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
+                0x000011a0                SystemCoreClockUpdate
  .text.Chip_USB_Init
-                0x00001360       0x4c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
-                0x00001360                Chip_USB_Init
+                0x000011b8       0x4c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
+                0x000011b8                Chip_USB_Init
  .text.Chip_Clock_SetMain_A_ClockSource
-                0x000013ac       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x00001204       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
  .text.Chip_Clock_GetMain_A_ClockSource
-                0x000013cc       0x18 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x00001224       0x18 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
  .text.Chip_Clock_SetMain_B_ClockSource
-                0x000013e4       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x0000123c       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
  .text.Chip_Clock_GetMain_B_ClockSource
-                0x00001404       0x18 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x0000125c       0x18 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
  .text.Chip_Clock_GetSysTickClockDiv
-                0x0000141c       0x18 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x00001274       0x18 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
  .text.Chip_Clock_SetUARTFRGDivider
-                0x00001434       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x0000128c       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
  .text.Chip_Clock_GetUARTFRGDivider
-                0x00001454       0x18 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x000012ac       0x18 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
  .text.Chip_Clock_GetMainOscRate
-                0x0000146c       0x14 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x000012c4       0x14 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
  .text.Chip_Clock_GetIntOscRate
-                0x00001480       0x14 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x000012d8       0x14 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
  .text.Chip_Clock_GetRTCOscRate
-                0x00001494       0x14 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x000012ec       0x14 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
  .text.Chip_Clock_GetWDTOSCRate
-                0x000014a8       0x14 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x00001300       0x14 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
  .text.Chip_Clock_GetPLLFreq
-                0x000014bc       0x28 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x00001314       0x28 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
  .text.Chip_Clock_GetPLLInClockRate
-                0x000014e4       0x38 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x0000133c       0x38 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
  .text.Chip_Clock_GetSystemPLLInClockRate
-                0x0000151c       0x1c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
-                0x0000151c                Chip_Clock_GetSystemPLLInClockRate
+                0x00001374       0x1c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x00001374                Chip_Clock_GetSystemPLLInClockRate
  .text.Chip_Clock_GetSystemPLLOutClockRate
-                0x00001538       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
-                0x00001538                Chip_Clock_GetSystemPLLOutClockRate
+                0x00001390       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x00001390                Chip_Clock_GetSystemPLLOutClockRate
  .text.Chip_Clock_GetMain_A_ClockRate
-                0x0000155c       0x44 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
-                0x0000155c                Chip_Clock_GetMain_A_ClockRate
+                0x000013b4       0x44 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x000013b4                Chip_Clock_GetMain_A_ClockRate
  .text.Chip_Clock_GetMain_B_ClockRate
-                0x000015a0       0x58 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
-                0x000015a0                Chip_Clock_GetMain_B_ClockRate
+                0x000013f8       0x58 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x000013f8                Chip_Clock_GetMain_B_ClockRate
  .text.Chip_Clock_SetMainClockSource
-                0x000015f8       0x3c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
-                0x000015f8                Chip_Clock_SetMainClockSource
+                0x00001450       0x3c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x00001450                Chip_Clock_SetMainClockSource
  .text.Chip_Clock_GetMainClockRate
-                0x00001634       0x28 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
-                0x00001634                Chip_Clock_GetMainClockRate
+                0x0000148c       0x28 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x0000148c                Chip_Clock_GetMainClockRate
  .text.Chip_Clock_EnablePeriphClock
-                0x0000165c       0x54 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
-                0x0000165c                Chip_Clock_EnablePeriphClock
+                0x000014b4       0x54 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x000014b4                Chip_Clock_EnablePeriphClock
  .text.Chip_Clock_GetSysTickClockRate
-                0x000016b0       0x30 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
-                0x000016b0                Chip_Clock_GetSysTickClockRate
+                0x00001508       0x30 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x00001508                Chip_Clock_GetSysTickClockRate
  .text.Chip_Clock_GetUARTBaseClockRate
-                0x000016e0       0x88 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
-                0x000016e0                Chip_Clock_GetUARTBaseClockRate
+                0x00001538       0x88 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x00001538                Chip_Clock_GetUARTBaseClockRate
  .text.Chip_Clock_SetUARTBaseClockRate
-                0x00001768       0xa0 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
-                0x00001768                Chip_Clock_SetUARTBaseClockRate
+                0x000015c0       0xa0 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x000015c0                Chip_Clock_SetUARTBaseClockRate
  .text.Chip_Clock_GetSystemClockRate
-                0x00001808       0x1c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
-                0x00001808                Chip_Clock_GetSystemClockRate
+                0x00001660       0x1c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+                0x00001660                Chip_Clock_GetSystemClockRate
  .text.Chip_SYSCTL_PeriphReset
-                0x00001824       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(gpio_15xx.o)
+                0x0000167c       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(gpio_15xx.o)
  .text.Chip_GPIO_Init
-                0x00001848       0x30 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(gpio_15xx.o)
-                0x00001848                Chip_GPIO_Init
+                0x000016a0       0x30 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(gpio_15xx.o)
+                0x000016a0                Chip_GPIO_Init
  .text.Chip_IOCON_PinMuxSet
-                0x00001878       0x2c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(iocon_15xx.o)
+                0x000016d0       0x2c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(iocon_15xx.o)
  .text.Chip_IOCON_SetPinMuxing
-                0x000018a4       0x50 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(iocon_15xx.o)
-                0x000018a4                Chip_IOCON_SetPinMuxing
+                0x000016fc       0x50 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(iocon_15xx.o)
+                0x000016fc                Chip_IOCON_SetPinMuxing
  .text.Chip_SWM_MovablePinAssign
-                0x000018f4       0x5c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(swm_15xx.o)
-                0x000018f4                Chip_SWM_MovablePinAssign
+                0x0000174c       0x5c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(swm_15xx.o)
+                0x0000174c                Chip_SWM_MovablePinAssign
  .text.Chip_SWM_EnableFixedPin
-                0x00001950       0x48 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(swm_15xx.o)
-                0x00001950                Chip_SWM_EnableFixedPin
+                0x000017a8       0x48 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(swm_15xx.o)
+                0x000017a8                Chip_SWM_EnableFixedPin
  .text.Chip_SYSCTL_AssertPeriphReset
-                0x00001998       0x48 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysctl_15xx.o)
-                0x00001998                Chip_SYSCTL_AssertPeriphReset
+                0x000017f0       0x48 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysctl_15xx.o)
+                0x000017f0                Chip_SYSCTL_AssertPeriphReset
  .text.Chip_SYSCTL_DeassertPeriphReset
-                0x000019e0       0x4c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysctl_15xx.o)
-                0x000019e0                Chip_SYSCTL_DeassertPeriphReset
+                0x00001838       0x4c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysctl_15xx.o)
+                0x00001838                Chip_SYSCTL_DeassertPeriphReset
  .text.Chip_SYSCTL_PowerDown
-                0x00001a2c       0x40 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysctl_15xx.o)
-                0x00001a2c                Chip_SYSCTL_PowerDown
+                0x00001884       0x40 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysctl_15xx.o)
+                0x00001884                Chip_SYSCTL_PowerDown
  .text.Chip_SYSCTL_PowerUp
-                0x00001a6c       0x40 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysctl_15xx.o)
-                0x00001a6c                Chip_SYSCTL_PowerUp
+                0x000018c4       0x40 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysctl_15xx.o)
+                0x000018c4                Chip_SYSCTL_PowerUp
  .text.Chip_FMC_SetFLASHAccess
-                0x00001aac       0x38 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
+                0x00001904       0x38 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
  .text.Chip_Clock_SetSystemPLLSource
-                0x00001ae4       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
+                0x0000193c       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
  .text.Chip_Clock_SetupSystemPLL
-                0x00001b04       0x34 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
+                0x0000195c       0x34 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
  .text.Chip_Clock_IsSystemPLLLocked
-                0x00001b38       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
+                0x00001990       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
  .text.Chip_Clock_SetSysClockDiv
-                0x00001b5c       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
+                0x000019b4       0x20 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
  .text.Chip_SetupXtalClocking
-                0x00001b7c       0x6c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
-                0x00001b7c                Chip_SetupXtalClocking
+                0x000019d4       0x6c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
+                0x000019d4                Chip_SetupXtalClocking
  .text.Chip_SYSCTL_PeriphReset
-                0x00001be8       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
+                0x00001a40       0x24 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
  .text.Chip_UART_SendByte
-                0x00001c0c       0x1c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
+                0x00001a64       0x1c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
  .text.Chip_UART_GetStatus
-                0x00001c28       0x18 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
+                0x00001a80       0x18 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
  .text.getUARTClockID
-                0x00001c40       0x34 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
+                0x00001a98       0x34 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
  .text.Chip_UART_Init
-                0x00001c74       0x4c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
-                0x00001c74                Chip_UART_Init
+                0x00001acc       0x4c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
+                0x00001acc                Chip_UART_Init
  .text.Chip_UART_Send
-                0x00001cc0       0x50 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
-                0x00001cc0                Chip_UART_Send
+                0x00001b18       0x50 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
+                0x00001b18                Chip_UART_Send
  .text.Chip_UART_SendBlocking
-                0x00001d10       0x4c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
-                0x00001d10                Chip_UART_SendBlocking
+                0x00001b68       0x4c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
+                0x00001b68                Chip_UART_SendBlocking
  .text.Chip_UART_SetBaud
-                0x00001d5c       0x2c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
-                0x00001d5c                Chip_UART_SetBaud
- .text.__main   0x00001d88       0x14 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_nohost.a(_cr__main.o)
-                0x00001d88                __main
- .text.memset   0x00001d9c        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(memset.o)
-                0x00001d9c                memset
+                0x00001bb4       0x2c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
+                0x00001bb4                Chip_UART_SetBaud
+ .text.__main   0x00001be0       0x14 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_nohost.a(_cr__main.o)
+                0x00001be0                __main
+ .text.memset   0x00001bf4        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(memset.o)
+                0x00001bf4                memset
  .text.fp_round
-                0x00001da0       0x4c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
+                0x00001bf8       0x4c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
  .text.pr_dec.constprop.1
-                0x00001dec       0x26 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
- *fill*         0x00001e12        0x2 ff
- .text.sprintf  0x00001e14       0x6c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
-                0x00001e14                sprintf
+                0x00001c44       0x26 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
+ *fill*         0x00001c6a        0x2 ff
+ .text.sprintf  0x00001c6c       0x6c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
+                0x00001c6c                sprintf
  .text.fp_display
-                0x00001e80      0x8ec c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
+                0x00001cd8      0x8ec c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
  .text.vsnprintf
-                0x0000276c       0x5c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
-                0x0000276c                vsnprintf
- .text.printf   0x000027c8       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
-                0x000027c8                printf
- .text._initio  0x0000281c       0xa4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(initio.o)
-                0x0000281c                _initio
+                0x000025c4       0x5c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
+                0x000025c4                vsnprintf
+ .text.printf   0x00002620       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
+                0x00002620                printf
+ .text._initio  0x00002674       0xa4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(initio.o)
+                0x00002674                _initio
  .text.__vfprintf
-                0x000028c0      0xd28 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(printf.o)
-                0x000028c0                __vfprintf
- .text.setvbuf  0x000035e8       0x40 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(setvbuf.o)
-                0x000035e8                setvbuf
- .text.strlen   0x00003628       0x4a c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(strlen.o)
-                0x00003628                strlen
+                0x00002718      0xd28 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(printf.o)
+                0x00002718                __vfprintf
+ .text.setvbuf  0x00003440       0x40 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(setvbuf.o)
+                0x00003440                setvbuf
+ .text.strlen   0x00003480       0x4a c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(strlen.o)
+                0x00003480                strlen
  .text._deferredlazyseek
-                0x00003672       0x44 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_deferredlazyseek.o)
-                0x00003672                _deferredlazyseek
+                0x000034ca       0x44 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_deferredlazyseek.o)
+                0x000034ca                _deferredlazyseek
  .text.__flsbuf
-                0x000036b6      0x140 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_deferredlazyseek.o)
-                0x000036b6                __flsbuf
- .text._fdopen  0x000037f6       0x6a c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_fdopen.o)
-                0x000037f6                _fdopen
- .text._fflush  0x00003860       0x58 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_fflush.o)
-                0x00003860                _fflush
- .text._frexpl  0x000038b8       0x5a c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_frexpl.o)
-                0x000038b8                _frexpl
- *fill*         0x00003912        0x2 ff
- .text._ldexpl  0x00003914       0x4c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_ldexpl.o)
-                0x00003914                _ldexpl
+                0x0000350e      0x140 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_deferredlazyseek.o)
+                0x0000350e                __flsbuf
+ .text._fdopen  0x0000364e       0x6a c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_fdopen.o)
+                0x0000364e                _fdopen
+ .text._fflush  0x000036b8       0x58 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_fflush.o)
+                0x000036b8                _fflush
+ .text._frexpl  0x00003710       0x5a c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_frexpl.o)
+                0x00003710                _frexpl
+ *fill*         0x0000376a        0x2 ff
+ .text._ldexpl  0x0000376c       0x4c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_ldexpl.o)
+                0x0000376c                _ldexpl
  .text._Cwritebuf
-                0x00003960       0x68 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_writebuf.o)
-                0x00003960                _Cwritebuf
- .text.malloc   0x000039c8       0xc8 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(alloc.o)
-                0x000039c8                malloc
- .text.free     0x00003a90       0x30 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(alloc.o)
-                0x00003a90                free
+                0x000037b8       0x68 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_writebuf.o)
+                0x000037b8                _Cwritebuf
+ .text.malloc   0x00003820       0xc8 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(alloc.o)
+                0x00003820                malloc
+ .text.free     0x000038e8       0x30 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(alloc.o)
+                0x000038e8                free
  .text._Csys_alloc
-                0x00003ac0       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(alloc.o)
-                0x00003ac0                _Csys_alloc
- .text.fclose   0x00003ae0       0x6c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fclose.o)
-                0x00003ae0                fclose
- .text.fflush   0x00003b4c       0x30 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fflush.o)
-                0x00003b4c                fflush
- .text.fseek    0x00003b7c      0x110 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fseek.o)
-                0x00003b7c                fseek
- .text.ftell    0x00003c8c       0x4c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(ftell.o)
-                0x00003c8c                ftell
- .text.remove   0x00003cd8       0x14 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(remove.o)
-                0x00003cd8                remove
- .text._sbrk    0x00003cec       0x40 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_cr_sbrk.o)
-                0x00003cec                _sbrk
+                0x00003918       0x20 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(alloc.o)
+                0x00003918                _Csys_alloc
+ .text.fclose   0x00003938       0x6c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fclose.o)
+                0x00003938                fclose
+ .text.fflush   0x000039a4       0x30 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fflush.o)
+                0x000039a4                fflush
+ .text.fseek    0x000039d4      0x110 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fseek.o)
+                0x000039d4                fseek
+ .text.ftell    0x00003ae4       0x4c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(ftell.o)
+                0x00003ae4                ftell
+ .text.remove   0x00003b30       0x14 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(remove.o)
+                0x00003b30                remove
+ .text._sbrk    0x00003b44       0x40 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_cr_sbrk.o)
+                0x00003b44                _sbrk
  .text._do_fflush
-                0x00003d2c       0x44 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_do_fflush.o)
-                0x00003d2c                _do_fflush
+                0x00003b84       0x44 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_do_fflush.o)
+                0x00003b84                _do_fflush
  .text.__check_heap_overflow
-                0x00003d70       0x18 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_cr_check_heap.o)
-                0x00003d70                __check_heap_overflow
+                0x00003bc8       0x18 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_cr_check_heap.o)
+                0x00003bc8                __check_heap_overflow
  .text.__aeabi_division_uldivmod
-                0x00003d88      0x174 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(division_64.o)
-                0x00003d88                __aeabi_uldivmod
-                0x00003d8c                __bhs_ldivmod1
+                0x00003be0      0x174 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(division_64.o)
+                0x00003be0                __aeabi_uldivmod
+                0x00003be4                __bhs_ldivmod1
  .text.__aeabi_division_idiv0
-                0x00003efc        0x2 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(division_idiv0.o)
-                0x00003efc                __aeabi_idiv0
- *fill*         0x00003efe        0x2 ff
+                0x00003d54        0x2 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(division_idiv0.o)
+                0x00003d54                __aeabi_idiv0
+ *fill*         0x00003d56        0x2 ff
  .text.__aeabi_dmul
-                0x00003f00      0x110 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
-                0x00003f00                __aeabi_dmul
+                0x00003d58      0x110 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
+                0x00003d58                __aeabi_dmul
  .text.__aeabi_ddiv
-                0x00004010      0x138 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
-                0x00004010                __aeabi_ddiv
+                0x00003e68      0x138 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
+                0x00003e68                __aeabi_ddiv
  .text.__aeabi_dsub
-                0x00004148      0x1a0 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
-                0x00004148                __aeabi_dsub
+                0x00003fa0      0x1a0 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
+                0x00003fa0                __aeabi_dsub
  .text.__aeabi_dadd
-                0x000042e8      0x10c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
-                0x000042e8                __aeabi_dadd
+                0x00004140      0x10c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
+                0x00004140                __aeabi_dadd
  .text.__aeabi_d2iz
-                0x000043f4       0x40 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
-                0x000043f4                __aeabi_d2iz
+                0x0000424c       0x40 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
+                0x0000424c                __aeabi_d2iz
  .text.__bhs_ui2d
-                0x00004434       0x46 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
-                0x00004434                __bhs_ui2d
+                0x0000428c       0x46 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
+                0x0000428c                __bhs_ui2d
  .text.__aeabi_i2d
-                0x0000447a       0x10 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
-                0x0000447a                __aeabi_i2d
+                0x000042d2       0x10 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
+                0x000042d2                __aeabi_i2d
  .text.__aeabi_dcmpeq
-                0x0000448a       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
-                0x0000448a                __aeabi_dcmpeq
+                0x000042e2       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
+                0x000042e2                __aeabi_dcmpeq
  .text.__aeabi_dcmplt
-                0x000044b6       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
-                0x000044b6                __aeabi_dcmplt
+                0x0000430e       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
+                0x0000430e                __aeabi_dcmplt
  .text.__aeabi_dcmple
-                0x0000450a       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
-                0x0000450a                __aeabi_dcmple
+                0x00004362       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
+                0x00004362                __aeabi_dcmple
  .text.__aeabi_dcmpge
-                0x0000455e       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
-                0x0000455e                __aeabi_dcmpge
+                0x000043b6       0x54 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(double.o)
+                0x000043b6                __aeabi_dcmpge
  .text.__aeabi_memset_lowlevel
-                0x000045b2       0x32 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(memcpy.o)
-                0x000045b2                __aeabi_lowlevel_memset
+                0x0000440a       0x32 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a(memcpy.o)
+                0x0000440a                __aeabi_lowlevel_memset
  .text.__sys_appexit
-                0x000045e4        0x2 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_nohost.a(__sys_appexit.o)
-                0x000045e4                __sys_appexit
-                0x000045e4                __exit
+                0x0000443c        0x2 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_nohost.a(__sys_appexit.o)
+                0x0000443c                __sys_appexit
+                0x0000443c                __exit
  .text.__sys_close
-                0x000045e6        0x6 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_nohost.a(__sys_close.o)
-                0x000045e6                __sys_close
+                0x0000443e        0x6 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_nohost.a(__sys_close.o)
+                0x0000443e                __sys_close
  .text.__sys_flen
-                0x000045ec        0x6 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_nohost.a(__sys_flen.o)
-                0x000045ec                __sys_flen
+                0x00004444        0x6 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_nohost.a(__sys_flen.o)
+                0x00004444                __sys_flen
  .text.__sys_istty
-                0x000045f2        0x6 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_nohost.a(__sys_istty.o)
-                0x000045f2                __sys_istty
+                0x0000444a        0x6 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_nohost.a(__sys_istty.o)
+                0x0000444a                __sys_istty
  .text.__sys_remove
-                0x000045f8        0x6 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_nohost.a(__sys_remove.o)
-                0x000045f8                __sys_remove
+                0x00004450        0x6 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_nohost.a(__sys_remove.o)
+                0x00004450                __sys_remove
  .text.__sys_seek
-                0x000045fe        0x6 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_nohost.a(__sys_seek.o)
-                0x000045fe                __sys_seek
+                0x00004456        0x6 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_nohost.a(__sys_seek.o)
+                0x00004456                __sys_seek
  .text.__sys_tmpnam
-                0x00004604        0x6 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_nohost.a(__sys_tmpnam.o)
-                0x00004604                __sys_tmpnam
+                0x0000445c        0x6 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_nohost.a(__sys_tmpnam.o)
+                0x0000445c                __sys_tmpnam
  *(.rodata .rodata.* .constdata .constdata.*)
- *fill*         0x0000460a        0x2 ff
- .rodata        0x0000460c       0x91 ./example/src/adc.o
- *fill*         0x0000469d        0x3 ff
+ *fill*         0x00004462        0x2 ff
+ .rodata        0x00004464       0x49 ./example/src/adc.o
+ *fill*         0x000044ad        0x3 ff
  .rodata.Mouse_ReportDescriptor
-                0x000046a0       0x32 ./example/src/hid_desc.o
-                0x000046a0                Mouse_ReportDescriptor
+                0x000044b0       0x18 ./example/src/hid_desc.o
+                0x000044b0                Mouse_ReportDescriptor
  .rodata.Mouse_ReportDescSize
-                0x000046d2        0x2 ./example/src/hid_desc.o
-                0x000046d2                Mouse_ReportDescSize
+                0x000044c8        0x2 ./example/src/hid_desc.o
+                0x000044c8                Mouse_ReportDescSize
+ *fill*         0x000044ca        0x2 ff
  .rodata.USB_DeviceDescriptor
-                0x000046d4       0x12 ./example/src/hid_desc.o
-                0x000046d4                USB_DeviceDescriptor
- *fill*         0x000046e6        0x2 ff
+                0x000044cc       0x12 ./example/src/hid_desc.o
+                0x000044cc                USB_DeviceDescriptor
+ *fill*         0x000044de        0x2 ff
  .rodata.USB_StringDescriptor
-                0x000046e8       0x76 ./example/src/hid_desc.o
-                0x000046e8                USB_StringDescriptor
- *fill*         0x0000475e        0x2 ff
+                0x000044e0       0x76 ./example/src/hid_desc.o
+                0x000044e0                USB_StringDescriptor
+ *fill*         0x00004556        0x2 ff
  .rodata.OscRateIn
-                0x00004760        0x4 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
-                0x00004760                OscRateIn
+                0x00004558        0x4 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+                0x00004558                OscRateIn
  .rodata.RTCOscRateIn
-                0x00004764        0x4 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
-                0x00004764                RTCOscRateIn
+                0x0000455c        0x4 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+                0x0000455c                RTCOscRateIn
  .rodata.ledpins
-                0x00004768        0x3 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
- *fill*         0x0000476b        0x1 ff
+                0x00004560        0x3 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+ *fill*         0x00004563        0x1 ff
  .rodata.ledports
-                0x0000476c        0x3 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
- *fill*         0x0000476f        0x1 ff
+                0x00004564        0x3 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+ *fill*         0x00004567        0x1 ff
  .rodata.portButton
-                0x00004770        0x5 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
- *fill*         0x00004775        0x3 ff
+                0x00004568        0x5 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+ *fill*         0x0000456d        0x3 ff
  .rodata.pinButton
-                0x00004778        0x5 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
- *fill*         0x0000477d        0x3 ff
- .rodata.stateButton
-                0x00004780        0x5 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
- *fill*         0x00004785        0x3 ff
+                0x00004570        0x5 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+ *fill*         0x00004575        0x3 ff
  .rodata.ioconSetup
-                0x00004788       0x74 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
+                0x00004578       0x74 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
  .rodata.swmSetup
-                0x000047fc        0x6 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
+                0x000045ec        0x6 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
  .rodata.str1.1
-                0x00004802       0x34 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
+                0x000045f2       0x34 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(fpprintf.o)
                                  0x35 (size before relaxing)
  .rodata.str1.1
-                0x00004836        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(initio.o)
+                0x00004626        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(initio.o)
  .rodata.str1.1
-                0x0000483a       0x31 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(printf.o)
+                0x0000462a       0x31 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(printf.o)
                                  0x38 (size before relaxing)
  .rodata.str1.1
-                0x0000486b       0x18 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(alloc.o)
- *fill*         0x00004883        0x5 ff
+                0x0000465b       0x18 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(alloc.o)
+ *fill*         0x00004673        0x5 ff
  .rodata.__huge_vall
-                0x00004888        0x8 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_hugeval.o)
-                0x00004888                __huge_vall
-                0x00004890                . = ALIGN (0x4)
+                0x00004678        0x8 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(_hugeval.o)
+                0x00004678                __huge_vall
+                0x00004680                . = ALIGN (0x4)
 
-.glue_7         0x00004890        0x0
- .glue_7        0x00004890        0x0 linker stubs
+.glue_7         0x00004680        0x0
+ .glue_7        0x00004680        0x0 linker stubs
 
-.glue_7t        0x00004890        0x0
- .glue_7t       0x00004890        0x0 linker stubs
+.glue_7t        0x00004680        0x0
+ .glue_7t       0x00004680        0x0 linker stubs
 
-.vfp11_veneer   0x00004890        0x0
- .vfp11_veneer  0x00004890        0x0 linker stubs
+.vfp11_veneer   0x00004680        0x0
+ .vfp11_veneer  0x00004680        0x0 linker stubs
 
-.v4_bx          0x00004890        0x0
- .v4_bx         0x00004890        0x0 linker stubs
+.v4_bx          0x00004680        0x0
+ .v4_bx         0x00004680        0x0 linker stubs
 
-.iplt           0x00004890        0x0
- .iplt          0x00004890        0x0 ./example/src/adc.o
+.iplt           0x00004680        0x0
+ .iplt          0x00004680        0x0 ./example/src/adc.o
 
-.rel.dyn        0x00004890        0x0
- .rel.iplt      0x00004890        0x0 ./example/src/adc.o
+.rel.dyn        0x00004680        0x0
+ .rel.iplt      0x00004680        0x0 ./example/src/adc.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x00004890                __exidx_start = .
+                0x00004680                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00004890                __exidx_end = .
-                0x00004890                _etext = .
+                0x00004680                __exidx_end = .
+                0x00004680                _etext = .
 
-.data_RAM2      0x02004000        0x0 load address 0x00004890
+.data_RAM2      0x02004000        0x0 load address 0x00004680
  FILL mask 0xff
                 [!provide]                PROVIDE (__start_data_RAM2, .)
  *(.ramfunc.$RAM2)
@@ -2431,7 +2429,7 @@ END GROUP
                 0x02004000                . = ALIGN (0x4)
                 [!provide]                PROVIDE (__end_data_RAM2, .)
 
-.data_RAM3      0x02008000        0x0 load address 0x00004890
+.data_RAM3      0x02008000        0x0 load address 0x00004680
  FILL mask 0xff
                 [!provide]                PROVIDE (__start_data_RAM3, .)
  *(.ramfunc.$RAM3)
@@ -2447,7 +2445,7 @@ END GROUP
                 0x02000000                . = ALIGN (0x4)
                 0x02000000                _end_uninit_RESERVED = .
 
-.data           0x02000000       0x24 load address 0x00004890
+.data           0x02000000       0x24 load address 0x00004680
  FILL mask 0xff
                 0x02000000                _data = .
  *(vtable)
@@ -2460,7 +2458,7 @@ END GROUP
  *fill*         0x02000023        0x1 ff
                 0x02000024                _edata = .
 
-.igot.plt       0x02000024        0x0 load address 0x000048b4
+.igot.plt       0x02000024        0x0 load address 0x000046a4
  .igot.plt      0x02000024        0x0 ./example/src/adc.o
 
 .bss_RAM2       0x02004000        0x0
@@ -2480,26 +2478,26 @@ END GROUP
 .bss            0x02000024      0x16c
                 0x02000024                _bss = .
  *(.bss*)
- .bss.sequence1Complete
-                0x02000024        0x1 ./example/src/adc.o
- *fill*         0x02000025        0x3 
- .bss.g_hUsb    0x02000028        0x4 ./example/src/adc.o
- .bss.count.9200
-                0x0200002c        0x4 ./example/src/adc.o
- .bss.g_mouse   0x02000030        0x8 ./example/src/hid_mouse.o
- .bss._extra    0x02000038        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(initio.o)
-                0x02000038                _extra
- .bss.__Ciob    0x0200003c      0x140 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(stdio.o)
-                0x0200003c                __Ciob
- .bss.errno     0x0200017c        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(errno.o)
-                0x0200017c                errno
- .bss.__heaps   0x02000180        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(__init_alloc.o)
-                0x02000180                __heaps
+ .bss.g_hUsb    0x02000024        0x4 ./example/src/adc.o
+ .bss.count.9191
+                0x02000028        0x4 ./example/src/adc.o
+ .bss.g_mouse   0x0200002c        0x8 ./example/src/hid_mouse.o
+ .bss._extra    0x02000034        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(initio.o)
+                0x02000034                _extra
+ .bss.__Ciob    0x02000038      0x140 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(stdio.o)
+                0x02000038                __Ciob
+ .bss.errno     0x02000178        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(errno.o)
+                0x02000178                errno
+ .bss.__heaps   0x0200017c        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(__init_alloc.o)
+                0x0200017c                __heaps
  .bss.__end_of_heap
-                0x02000184        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(__init_alloc.o)
-                0x02000184                __end_of_heap
+                0x02000180        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(__init_alloc.o)
+                0x02000180                __end_of_heap
  *(COMMON)
- COMMON         0x02000188        0x4 ./example/src/adc.o
+ COMMON         0x02000184        0x8 ./example/src/adc.o
+                0x02000184                sequence0Complete
+                0x02000185                sequence1Complete
+                0x02000186                threshold1Crossed
                 0x02000188                g_pUsbApi
  COMMON         0x0200018c        0x4 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
                 0x0200018c                SystemCoreClock
@@ -2527,41 +2525,41 @@ END GROUP
                 [!provide]                PROVIDE (__valid_user_code_checksum, (0x0 - ((((((_vStackTop + (ResetISR + 0x1)) + (NMI_Handler + 0x1)) + (HardFault_Handler + 0x1)) + (DEFINED (MemManage_Handler)?MemManage_Handler:0x0 + 0x1)) + (DEFINED (BusFault_Handler)?BusFault_Handler:0x0 + 0x1)) + (DEFINED (UsageFault_Handler)?UsageFault_Handler:0x0 + 0x1))))
 OUTPUT(periph_adc_with_vcom.axf elf32-littlearm)
 
-.debug_info     0x00000000     0xb3a8
- .debug_info    0x00000000     0x3659 ./example/src/adc.o
- .debug_info    0x00003659      0x279 ./example/src/cr_startup_lpc15xx.o
- .debug_info    0x000038d2      0x13a ./example/src/hid_desc.o
- .debug_info    0x00003a0c     0x1dbe ./example/src/hid_mouse.o
- .debug_info    0x000057ca       0xd8 ./example/src/sysinit.o
- .debug_info    0x000058a2      0xaa8 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
- .debug_info    0x0000634a      0xc90 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
- .debug_info    0x00006fda      0x7a5 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
- .debug_info    0x0000777f      0x98d C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
- .debug_info    0x0000810c      0xd3e C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
- .debug_info    0x00008e4a      0x624 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(gpio_15xx.o)
- .debug_info    0x0000946e      0x1f9 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(iocon_15xx.o)
- .debug_info    0x00009667      0x5ea C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(swm_15xx.o)
- .debug_info    0x00009c51      0x74c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysctl_15xx.o)
- .debug_info    0x0000a39d      0x738 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
- .debug_info    0x0000aad5      0x8d3 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
+.debug_info     0x00000000     0xb357
+ .debug_info    0x00000000     0x3600 ./example/src/adc.o
+ .debug_info    0x00003600      0x279 ./example/src/cr_startup_lpc15xx.o
+ .debug_info    0x00003879      0x13a ./example/src/hid_desc.o
+ .debug_info    0x000039b3     0x1dc6 ./example/src/hid_mouse.o
+ .debug_info    0x00005779       0xd8 ./example/src/sysinit.o
+ .debug_info    0x00005851      0xaa8 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+ .debug_info    0x000062f9      0xc90 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
+ .debug_info    0x00006f89      0x7a5 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
+ .debug_info    0x0000772e      0x98d C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
+ .debug_info    0x000080bb      0xd3e C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+ .debug_info    0x00008df9      0x624 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(gpio_15xx.o)
+ .debug_info    0x0000941d      0x1f9 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(iocon_15xx.o)
+ .debug_info    0x00009616      0x5ea C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(swm_15xx.o)
+ .debug_info    0x00009c00      0x74c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysctl_15xx.o)
+ .debug_info    0x0000a34c      0x738 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
+ .debug_info    0x0000aa84      0x8d3 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
 
-.debug_abbrev   0x00000000     0x1a8b
- .debug_abbrev  0x00000000      0x39a ./example/src/adc.o
- .debug_abbrev  0x0000039a       0xed ./example/src/cr_startup_lpc15xx.o
- .debug_abbrev  0x00000487       0x60 ./example/src/hid_desc.o
- .debug_abbrev  0x000004e7      0x2c3 ./example/src/hid_mouse.o
- .debug_abbrev  0x000007aa       0x82 ./example/src/sysinit.o
- .debug_abbrev  0x0000082c      0x20e C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
- .debug_abbrev  0x00000a3a      0x208 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
- .debug_abbrev  0x00000c42      0x195 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
- .debug_abbrev  0x00000dd7      0x1b3 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
- .debug_abbrev  0x00000f8a      0x285 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
- .debug_abbrev  0x0000120f      0x16a C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(gpio_15xx.o)
- .debug_abbrev  0x00001379      0x137 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(iocon_15xx.o)
- .debug_abbrev  0x000014b0      0x13e C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(swm_15xx.o)
- .debug_abbrev  0x000015ee      0x12b C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysctl_15xx.o)
- .debug_abbrev  0x00001719      0x18c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
- .debug_abbrev  0x000018a5      0x1e6 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
+.debug_abbrev   0x00000000     0x1a7e
+ .debug_abbrev  0x00000000      0x38f ./example/src/adc.o
+ .debug_abbrev  0x0000038f       0xed ./example/src/cr_startup_lpc15xx.o
+ .debug_abbrev  0x0000047c       0x60 ./example/src/hid_desc.o
+ .debug_abbrev  0x000004dc      0x2c1 ./example/src/hid_mouse.o
+ .debug_abbrev  0x0000079d       0x82 ./example/src/sysinit.o
+ .debug_abbrev  0x0000081f      0x20e C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+ .debug_abbrev  0x00000a2d      0x208 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
+ .debug_abbrev  0x00000c35      0x195 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
+ .debug_abbrev  0x00000dca      0x1b3 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
+ .debug_abbrev  0x00000f7d      0x285 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+ .debug_abbrev  0x00001202      0x16a C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(gpio_15xx.o)
+ .debug_abbrev  0x0000136c      0x137 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(iocon_15xx.o)
+ .debug_abbrev  0x000014a3      0x13e C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(swm_15xx.o)
+ .debug_abbrev  0x000015e1      0x12b C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysctl_15xx.o)
+ .debug_abbrev  0x0000170c      0x18c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
+ .debug_abbrev  0x00001898      0x1e6 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
 
 .debug_aranges  0x00000000      0x760
  .debug_aranges
@@ -2688,56 +2686,56 @@ OUTPUT(periph_adc_with_vcom.axf elf32-littlearm)
  .debug_macro   0x000067af      0x239 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
  .debug_macro   0x000069e8      0x239 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
 
-.debug_line     0x00000000     0x53b0
- .debug_line    0x00000000      0x853 ./example/src/adc.o
- .debug_line    0x00000853       0xde ./example/src/cr_startup_lpc15xx.o
- .debug_line    0x00000931      0x2e1 ./example/src/hid_desc.o
- .debug_line    0x00000c12      0x734 ./example/src/hid_mouse.o
- .debug_line    0x00001346      0x4bb ./example/src/sysinit.o
- .debug_line    0x00001801      0x6de C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
- .debug_line    0x00001edf      0x5a0 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
- .debug_line    0x0000247f      0x591 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
- .debug_line    0x00002a10      0x4bb C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
- .debug_line    0x00002ecb      0x70f C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
- .debug_line    0x000035da      0x513 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(gpio_15xx.o)
- .debug_line    0x00003aed      0x45b C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(iocon_15xx.o)
- .debug_line    0x00003f48      0x486 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(swm_15xx.o)
- .debug_line    0x000043ce      0x4bd C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysctl_15xx.o)
- .debug_line    0x0000488b      0x4f0 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
- .debug_line    0x00004d7b      0x635 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
+.debug_line     0x00000000     0x5392
+ .debug_line    0x00000000      0x838 ./example/src/adc.o
+ .debug_line    0x00000838       0xde ./example/src/cr_startup_lpc15xx.o
+ .debug_line    0x00000916      0x2e1 ./example/src/hid_desc.o
+ .debug_line    0x00000bf7      0x731 ./example/src/hid_mouse.o
+ .debug_line    0x00001328      0x4bb ./example/src/sysinit.o
+ .debug_line    0x000017e3      0x6de C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+ .debug_line    0x00001ec1      0x5a0 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
+ .debug_line    0x00002461      0x591 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
+ .debug_line    0x000029f2      0x4bb C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
+ .debug_line    0x00002ead      0x70f C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+ .debug_line    0x000035bc      0x513 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(gpio_15xx.o)
+ .debug_line    0x00003acf      0x45b C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(iocon_15xx.o)
+ .debug_line    0x00003f2a      0x486 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(swm_15xx.o)
+ .debug_line    0x000043b0      0x4bd C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysctl_15xx.o)
+ .debug_line    0x0000486d      0x4f0 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
+ .debug_line    0x00004d5d      0x635 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
 
-.debug_str      0x00000000    0x18b8f
- .debug_str     0x00000000    0x1621c ./example/src/adc.o
-                              0x164f3 (size before relaxing)
- .debug_str     0x0001621c      0x1e1 ./example/src/cr_startup_lpc15xx.o
+.debug_str      0x00000000    0x18b76
+ .debug_str     0x00000000    0x1621f ./example/src/adc.o
+                              0x164f6 (size before relaxing)
+ .debug_str     0x0001621f      0x1e1 ./example/src/cr_startup_lpc15xx.o
                                0x26d0 (size before relaxing)
- .debug_str     0x000163fd       0x46 ./example/src/hid_desc.o
+ .debug_str     0x00016400       0x46 ./example/src/hid_desc.o
                                0x7c6b (size before relaxing)
- .debug_str     0x00016443      0x420 ./example/src/hid_mouse.o
-                              0x15160 (size before relaxing)
- .debug_str     0x00016863       0x19 ./example/src/sysinit.o
+ .debug_str     0x00016446      0x409 ./example/src/hid_mouse.o
+                              0x15162 (size before relaxing)
+ .debug_str     0x0001684f       0x19 ./example/src/sysinit.o
                                0xf57a (size before relaxing)
- .debug_str     0x0001687c      0x806 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+ .debug_str     0x00016868      0x806 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
                                0xff6f (size before relaxing)
- .debug_str     0x00017082      0x848 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
+ .debug_str     0x0001706e      0x848 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
                               0x10561 (size before relaxing)
- .debug_str     0x000178ca      0x206 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
+ .debug_str     0x000178b6      0x201 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
                                0xf8c3 (size before relaxing)
- .debug_str     0x00017ad0      0x10c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
+ .debug_str     0x00017ab7      0x10c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
                                0xfcb5 (size before relaxing)
- .debug_str     0x00017bdc      0x88f C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+ .debug_str     0x00017bc3      0x88f C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
                               0x100b5 (size before relaxing)
- .debug_str     0x0001846b       0xdf C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(gpio_15xx.o)
+ .debug_str     0x00018452       0xdf C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(gpio_15xx.o)
                                0xf762 (size before relaxing)
- .debug_str     0x0001854a       0x41 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(iocon_15xx.o)
+ .debug_str     0x00018531       0x41 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(iocon_15xx.o)
                                0xf27f (size before relaxing)
- .debug_str     0x0001858b      0x140 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(swm_15xx.o)
+ .debug_str     0x00018572      0x140 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(swm_15xx.o)
                                0xfc87 (size before relaxing)
- .debug_str     0x000186cb      0x183 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysctl_15xx.o)
+ .debug_str     0x000186b2      0x183 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysctl_15xx.o)
                                0xf76c (size before relaxing)
- .debug_str     0x0001884e      0x13f C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
+ .debug_str     0x00018835      0x13f C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
                                0xf75b (size before relaxing)
- .debug_str     0x0001898d      0x202 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
+ .debug_str     0x00018974      0x202 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
                                0xf8be (size before relaxing)
 
 .comment        0x00000000       0xdc
@@ -2903,19 +2901,19 @@ OUTPUT(periph_adc_with_vcom.axf elf32-littlearm)
  .ARM.attributes
                 0x00000a26       0x33 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_nohost.a(__sys_tmpnam.o)
 
-.debug_frame    0x00000000     0x1b6c
- .debug_frame   0x00000000      0x300 ./example/src/adc.o
- .debug_frame   0x00000300      0x170 ./example/src/cr_startup_lpc15xx.o
- .debug_frame   0x00000470      0x164 ./example/src/hid_mouse.o
- .debug_frame   0x000005d4       0x2c ./example/src/sysinit.o
- .debug_frame   0x00000600      0x360 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
- .debug_frame   0x00000960      0x14c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
- .debug_frame   0x00000aac      0x290 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
- .debug_frame   0x00000d3c      0x104 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
- .debug_frame   0x00000e40      0x4b0 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
- .debug_frame   0x000012f0      0x1b4 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(gpio_15xx.o)
- .debug_frame   0x000014a4       0x5c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(iocon_15xx.o)
- .debug_frame   0x00001500       0xd4 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(swm_15xx.o)
- .debug_frame   0x000015d4      0x124 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysctl_15xx.o)
- .debug_frame   0x000016f8      0x134 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
- .debug_frame   0x0000182c      0x340 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)
+.debug_frame    0x00000000     0x1b60
+ .debug_frame   0x00000000      0x2fc ./example/src/adc.o
+ .debug_frame   0x000002fc      0x170 ./example/src/cr_startup_lpc15xx.o
+ .debug_frame   0x0000046c      0x15c ./example/src/hid_mouse.o
+ .debug_frame   0x000005c8       0x2c ./example/src/sysinit.o
+ .debug_frame   0x000005f4      0x360 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board.o)
+ .debug_frame   0x00000954      0x14c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\Debug\liblpc_board_nxp_lpcxpresso_1549.a(board_sysinit.o)
+ .debug_frame   0x00000aa0      0x290 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(adc_15xx.o)
+ .debug_frame   0x00000d30      0x104 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(chip_15xx.o)
+ .debug_frame   0x00000e34      0x4b0 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(clock_15xx.o)
+ .debug_frame   0x000012e4      0x1b4 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(gpio_15xx.o)
+ .debug_frame   0x00001498       0x5c C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(iocon_15xx.o)
+ .debug_frame   0x000014f4       0xd4 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(swm_15xx.o)
+ .debug_frame   0x000015c8      0x124 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysctl_15xx.o)
+ .debug_frame   0x000016ec      0x134 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(sysinit_15xx.o)
+ .debug_frame   0x00001820      0x340 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\Debug\liblpc_chip_15xx.a(uart_15xx.o)

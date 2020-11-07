@@ -38,7 +38,7 @@
  ****************************************************************************/
 
 static volatile int ticks;
-static bool sequence0Complete, sequence1Complete, threshold1Crossed;
+bool sequence0Complete, sequence1Complete, threshold1Crossed;
 
 #define TICKRATE_HZ (100)	/* 100 ticks per second */
 
@@ -68,7 +68,6 @@ static bool sequence0Complete, sequence1Complete, threshold1Crossed;
  ****************************************************************************/
 
 static USBD_HANDLE_T g_hUsb;
-static uint8_t g_rxBuff[256];
 const  USBD_API_T *g_pUsbApi;
 
 /*****************************************************************************
@@ -110,41 +109,25 @@ USB_INTERFACE_DESCRIPTOR *find_IntfDesc(const uint8_t *pDesc, uint32_t intfClass
 
 #define ADC_MY_RESULT(n)           ((((n) >> 8) & 0xFF))
 
-void showValudeADC(LPC_ADC_T *pADC)
+void showValudeADC( uint8_t *report)
 {
-	int index, j;
+	int index = 1, j;
 	uint32_t rawSample;
 
-	if (pADC == LPC_ADC0) {
-		index = 0;
-	}
-	else {
-		index = 1;
-	}
-char buf[100];
-for(uint8_t i=0 ; i < 100 ; i++ )
-	buf[i] = 0;
 	/* Get raw sample data for channels 0-11 */
-	for (j = 0; j < 12; j++) {
-		rawSample = Chip_ADC_GetDataReg(pADC, j);
+	for (j = 0; j < 12; j++)
+	{
+		rawSample = Chip_ADC_GetDataReg(LPC_ADC1, j);
 
 		/* Show some ADC data */
-		if ((rawSample & (ADC_DR_OVERRUN | ADC_SEQ_GDAT_DATAVALID)) != 0) {
+		if ((rawSample & (ADC_DR_OVERRUN | ADC_SEQ_GDAT_DATAVALID)) != 0)
+		{
 			DEBUGOUT("ADC%d_%d: Sample value = 0x%x (Data sample %d)\r\n", index, j,
 					 ADC_DR_RESULT(rawSample), j);
-			for(uint8_t i=0 ; i < 100 ; i++ )
-				buf[i] = 0;
-					sprintf(&buf[0], "ADC%d_%d: Sample value = 0x%x (Data sample %d)\r\n", index, j,
-					ADC_MY_RESULT(rawSample), j);
+             uint32_t temp = ADC_MY_RESULT(rawSample);
+             temp -= 128;
+             report[0] = temp;
 
-
-			/* Threshold events are only on ADC1 */
-			if (index == 1) {
-				DEBUGOUT("ADC%d_%d: Threshold range = 0x%x\r\n", index, j,
-						 ADC_DR_THCMPRANGE(rawSample));
-				DEBUGOUT("ADC%d_%d: Threshold cross = 0x%x\r\n", index, j,
-						 ADC_DR_THCMPCROSS(rawSample));
-			}
 		}
 	}
 }
@@ -325,11 +308,12 @@ int main(void)
 
 
 		/* Sleep until something happens */
-		__WFI();
 
-		if (sequence1Complete) {
+		Mouse_Tasks();
+		__WFI();
+	/*	if (sequence1Complete) {
 			showValudeADC(LPC_ADC1);
-		}
+		}*/
 	}
 
 	/* Should not run to here */
