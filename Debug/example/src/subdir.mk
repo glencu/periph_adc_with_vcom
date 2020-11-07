@@ -5,23 +5,23 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../example/src/adc.c \
-../example/src/cdc_desc.c \
-../example/src/cdc_vcom.c \
 ../example/src/cr_startup_lpc15xx.c \
+../example/src/hid_desc.c \
+../example/src/hid_mouse.c \
 ../example/src/sysinit.c 
 
 OBJS += \
 ./example/src/adc.o \
-./example/src/cdc_desc.o \
-./example/src/cdc_vcom.o \
 ./example/src/cr_startup_lpc15xx.o \
+./example/src/hid_desc.o \
+./example/src/hid_mouse.o \
 ./example/src/sysinit.o 
 
 C_DEPS += \
 ./example/src/adc.d \
-./example/src/cdc_desc.d \
-./example/src/cdc_vcom.d \
 ./example/src/cr_startup_lpc15xx.d \
+./example/src/hid_desc.d \
+./example/src/hid_mouse.d \
 ./example/src/sysinit.d 
 
 

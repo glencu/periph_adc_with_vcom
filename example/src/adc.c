@@ -32,7 +32,7 @@
 #include "board.h"
 #include <stdio.h>
 #include "app_usbd_cfg.h"
-#include "cdc_vcom.h"
+#include "hid_mouse.h"
 /*****************************************************************************
  * Private types/enumerations/variables
  ****************************************************************************/
@@ -134,10 +134,9 @@ for(uint8_t i=0 ; i < 100 ; i++ )
 					 ADC_DR_RESULT(rawSample), j);
 			for(uint8_t i=0 ; i < 100 ; i++ )
 				buf[i] = 0;
-			uint8_t t1 =
-			sprintf(&buf[0], "ADC%d_%d: Sample value = 0x%x (Data sample %d)\r\n", index, j,
+					sprintf(&buf[0], "ADC%d_%d: Sample value = 0x%x (Data sample %d)\r\n", index, j,
 					ADC_MY_RESULT(rawSample), j);
-			vcom_write(&buf[0],strlen(buf));
+
 
 			/* Threshold events are only on ADC1 */
 			if (index == 1) {
@@ -270,6 +269,11 @@ int main(void)
 
 
 
+	/* This example uses the periodic sysTick to manually trigger the ADC,
+	   but a periodic timer can be used in a match configuration to start
+	   an ADC sequence without software intervention. */
+	SysTick_Config(Chip_Clock_GetSysTickClockRate() / TICKRATE_HZ);
+
 	/* initialize USBD ROM API pointer. */
 	g_pUsbApi = (const USBD_API_T *) LPC_ROM_API->pUSBD;
 
@@ -284,54 +288,41 @@ int main(void)
 	    to avoid data corruption. Corruption of padding memory doesn’t affect the
 	    stack/program behaviour.
 	 */
-	usb_param.max_num_ep = 3 + 1;
+	usb_param.max_num_ep = 2 + 1;
 	usb_param.mem_base = USB_STACK_MEM_BASE;
 	usb_param.mem_size = USB_STACK_MEM_SIZE;
 
 	/* Set the USB descriptors */
-	desc.device_desc = (uint8_t *) &USB_DeviceDescriptor[0];
-	desc.string_desc = (uint8_t *) &USB_StringDescriptor[0];
+	desc.device_desc = (uint8_t *) USB_DeviceDescriptor;
+	desc.string_desc = (uint8_t *) USB_StringDescriptor;
+
 	/* Note, to pass USBCV test full-speed only devices should have both
-	   descriptor arrays point to same location and device_qualifier set to 0.
+	 * descriptor arrays point to same location and device_qualifier set
+	 * to 0.
 	 */
-	desc.high_speed_desc = (uint8_t *) &USB_FsConfigDescriptor[0];
-	desc.full_speed_desc = (uint8_t *) &USB_FsConfigDescriptor[0];
+	desc.high_speed_desc = USB_FsConfigDescriptor;
+	desc.full_speed_desc = USB_FsConfigDescriptor;
 	desc.device_qualifier = 0;
 
 	/* USB Initialization */
 	ret = USBD_API->hw->Init(&g_hUsb, &desc, &usb_param);
 	if (ret == LPC_OK) {
 
-		/* Init VCOM interface */
-		ret = vcom_init(g_hUsb, &desc, &usb_param);
+		ret = Mouse_Init(g_hUsb,
+						 (USB_INTERFACE_DESCRIPTOR *) &USB_FsConfigDescriptor[sizeof(USB_CONFIGURATION_DESCRIPTOR)],
+						 &usb_param.mem_base, &usb_param.mem_size);
 		if (ret == LPC_OK) {
 			/*  enable USB interrupts */
 			NVIC_EnableIRQ(USB0_IRQn);
 			/* now connect */
 			USBD_API->hw->Connect(g_hUsb, 1);
 		}
-
 	}
-
-	/* This example uses the periodic sysTick to manually trigger the ADC,
-	   but a periodic timer can be used in a match configuration to start
-	   an ADC sequence without software intervention. */
-	SysTick_Config(Chip_Clock_GetSysTickClockRate() / TICKRATE_HZ);
 
 	/* Endless loop */
 	while (1) {
 
-		if ((vcom_connected() != 0) && (prompt == 0)) {
-					vcom_write("Hello World!!\r\n", 15);
-					prompt = 1;
-				}
-				/* If VCOM port is opened echo whatever we receive back to host. */
-				if (prompt) {
-					rdCnt = vcom_bread(&g_rxBuff[0], 256);
-					if (rdCnt) {
-						vcom_write(&g_rxBuff[0], rdCnt);
-					}
-				}
+
 
 		/* Sleep until something happens */
 		__WFI();

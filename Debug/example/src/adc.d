@@ -63,7 +63,7 @@ example/src/adc.o example/src/adc.d: ../example/src/adc.c \
  C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\inc\usbd/usbd_hid.h \
  C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\inc\usbd/usbd_cdcuser.h \
  C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\inc\usbd/usbd_cdc.h \
- C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\periph_adc_with_vcom\example\inc/cdc_vcom.h \
+ C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\periph_adc_with_vcom\example\inc/hid_mouse.h \
  C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\periph_adc_with_vcom\example\inc/app_usbd_cfg.h
 
 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_board_nxp_lpcxpresso_1549\inc/board.h:
@@ -194,6 +194,6 @@ C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\inc\usbd
 
 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\lpc_chip_15xx\inc\usbd/usbd_cdc.h:
 
-C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\periph_adc_with_vcom\example\inc/cdc_vcom.h:
+C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\periph_adc_with_vcom\example\inc/hid_mouse.h:
 
 C:\Users\Bobasek\Documents\LPCXpresso_8.2.2_650\workspace\periph_adc_with_vcom\example\inc/app_usbd_cfg.h:
