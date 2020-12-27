@@ -146,7 +146,7 @@ void SysTick_Handler(void)
 
 	/* Every 1/2 second */
 	count++;
-	if (count >= (TICKRATE_HZ / 2)) {
+	if (count >= (TICKRATE_HZ / 8)) {
 		count = 0;
 
 		/* Manual start for ADC1 conversion sequence A */
